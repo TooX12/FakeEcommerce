@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { links } from "../utils/links";
 
 function MobileNavBar({
   isOpen,
@@ -14,45 +15,31 @@ function MobileNavBar({
     <>
       <div
         className={`${
-          isOpen ? "bg-black/10 backdrop-blur-sm" : "bg-black/0"
+          isOpen ? "bg-black/10 backdrop-blur-sm z-10" : "bg-black/0"
         } w-full h-[120vh] absolute overflow-hidden top-0 transition-[backdrop-filter] duration-500 ease-in-out`}
         onTouchStart={touchStart}
       ></div>
       <div
         className={`${
           isOpen ? "translate-x-0 " : "translate-x-64"
-        } top-0 right-0 fixed h-full w-64 md:w-60 z-20 px-6 bg-white md:hidden flex transition-transform duration-500 ease-in-out `}
+        } top-0 right-0 fixed h-screen w-64 md:w-60 z-20 px-6 bg-white md:hidden flex transition-transform duration-500 ease-in-out `}
       >
         <ul className="w-full list-style-none">
-          <li className="p-1 sm:p-2 list-item" onClick={setIsOpen}>
+          <li className="list-item mt-4" onClick={setIsOpen}>
             <span className="flex justify-end">
-              <i className="bx bx-x text-xl sm:text-2xl text-black opacity-60 hover:opacity-80 focus:opacity-80 p-0"></i>
+              <i className="bx bx-x text-4xl text-black opacity-60 hover:opacity-80 focus:opacity-80"></i>
             </span>
           </li>
-          <li className="p-2">
-            <a
-              className="text-black opacity-60 hover:opacity-80 focus:opacity-80 p-0"
-              href="#"
-            >
-              Productos
-            </a>
-          </li>
-          <li className="p-2">
-            <a
-              className="text-black opacity-60 hover:opacity-80 focus:opacity-80 p-0"
-              href="#"
-            >
-              Hombre
-            </a>
-          </li>
-          <li className="p-2">
-            <a
-              className="text-black opacity-60 hover:opacity-80 focus:opacity-80 p-0"
-              href="#"
-            >
-              Mujer
-            </a>
-          </li>
+          {links.map((link) => (
+            <li className="p-2" key={link.href}>
+              <a
+                className="text-black opacity-60 hover:opacity-80 focus:opacity-80 p-0"
+                href={link.href}
+              >
+                {link.nombre}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </>
