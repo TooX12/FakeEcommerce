@@ -7,7 +7,7 @@ function NavBar() {
   const { width, isOpen, setIsOpen, handleTouchStart } = useShowNavigation();
 
   return (
-    <nav className="sticky top-0 z-10 max-w-12xl mx-auto flex flex-wrap items-center justify-between py-3 bg-gray-900 text-gray-200 shadow-lg">
+    <nav className="h-20 sticky top-0 z-20 max-w-12xl mx-auto flex flex-wrap items-center justify-between py-3 bg-gray-900 text-gray-200 shadow-lg">
       {width && width < 768 && (
         <MobileNavBar
           isOpen={isOpen}
@@ -18,9 +18,9 @@ function NavBar() {
       <div className="w-full flex flex-grow items-center justify-between px-3 sm:px-6">
         <a
           className="text-xl sm:text-2xl basis-0 flex-grow-1 min-w-[5rem] md:min-w-[10rem] lg:min-w-[15rem] text-white font-semibold"
-          href="#"
+          href="/"
         >
-          Fake Ecommerce
+          Ecommerce
         </a>
 
         <ul className="hidden md:relative md:flex list-style-none flex-grow-0">
@@ -55,7 +55,7 @@ function NavBar() {
           <li className="p-1 sm:p-2">
             <a
               className="text-white opacity-60 hover:opacity-80 focus:opacity-80 p-0"
-              href="#"
+              href="/login"
             >
               <i className="bx bx-user text-2xl"></i>
             </a>

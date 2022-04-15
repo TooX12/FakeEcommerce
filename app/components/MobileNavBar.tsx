@@ -13,12 +13,12 @@ function MobileNavBar({
 
   return (
     <>
-      <div
+      {/* <div
         className={`${
-          isOpen ? "bg-black/10 backdrop-blur-sm z-10" : "bg-black/0"
+          isOpen ? "bg-black/10 backdrop-blur-sm z-10" : "bg-black/0 z-0"
         } w-full h-[120vh] absolute overflow-hidden top-0 transition-[backdrop-filter] duration-500 ease-in-out`}
         onTouchStart={touchStart}
-      ></div>
+      ></div> */}
       <div
         className={`${
           isOpen ? "translate-x-0 " : "translate-x-64"

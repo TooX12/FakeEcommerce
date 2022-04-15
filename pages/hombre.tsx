@@ -24,9 +24,6 @@ function hombre({ productos }: { productos: Producto[] }) {
 
         <div className="flex flex-wrap pl-5 gap-5">
           {renderProductos()}
-          {renderProductos()}
-          {renderProductos()}
-          {renderProductos()}
       </div>
     </section>
   );
