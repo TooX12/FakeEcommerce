@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 function dashboard() {
+
   return (
     <div>dashboard</div>
   )
