@@ -39,7 +39,7 @@ function NavBar() {
           <li className="p-1 sm:p-2">
             <a
               className="text-white opacity-60 hover:opacity-80 focus:opacity-80 p-0"
-              href="#"
+              href="/carrito"
             >
               <i className="bx bx-cart-alt text-2xl"></i>
             </a>

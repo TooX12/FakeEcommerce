@@ -21,8 +21,8 @@ function MobileNavBar({
       ></div> */}
       <div
         className={`${
-          isOpen ? "translate-x-0 " : "translate-x-64"
-        } top-0 right-0 fixed h-screen w-64 md:w-60 z-20 px-6 bg-white md:hidden flex transition-transform duration-500 ease-in-out `}
+          isOpen ? "translate-x-0 " : "translate-x-full"
+        } top-0 right-0 fixed h-screen w-full z-20 px-6 bg-white md:hidden flex transition-transform duration-500 ease-in-out `}
       >
         <ul className="w-full list-style-none">
           <li className="list-item mt-4" onClick={setIsOpen}>
