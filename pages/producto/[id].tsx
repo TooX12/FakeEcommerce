@@ -6,6 +6,8 @@ import { Producto } from "../../app/ts/producto.interface";
 function Producto({ producto }: { producto: Producto }) {
   const { setItem, getItem } = useStorage();
 
+  console.log(producto)
+
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     let cart = [];
@@ -92,9 +94,21 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const productosRes = await fetch(
+    "https://fakestoreapi.com/products"
+  ).then((res) => res.json());
+
+const paths = productosRes.map((producto:any)=> {
   return {
-    paths: [], //indicates that no page needs be created at build time
-    fallback: "blocking", //indicates the type of fallback
+    params:{
+      id: `${producto.id}`,
+    }
+  }
+})
+
+  return {
+    paths,
+    fallback: false, 
   };
 };
