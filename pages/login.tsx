@@ -11,7 +11,7 @@ async function loginUser(credentials: any) {
   }).then((data) => data.json());
 }
 
-function login() {
+function Login() {
   const [username, setUserName] = useState<string | undefined>(undefined);
   const [password, setPassword] = useState<string | undefined>(undefined);
   const {setItem, getItem} = useStorage();
@@ -126,4 +126,4 @@ function login() {
   );
 }
 
-export default login;
+export default Login;

@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import useStorage from "../app/hooks/useStorage";
 
-function carrito() {
+function Carrito() {
   const [productos, setProductos] = useState<any[]>([]);
   const [subTotal, setSubTotal] = useState<any>(0);
   const { setItem, getItem } = useStorage();
@@ -168,4 +168,4 @@ function carrito() {
   );
 }
 
-export default carrito;
+export default Carrito;

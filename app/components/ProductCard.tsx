@@ -5,7 +5,7 @@ import { Producto } from "../ts/producto.interface";
 function ProductCard({ producto }: { producto: Producto }) {
   const { id, title, price, image, rating } = producto;
   return (
-    <div className="w-[calc(50%-1.25rem)] md:w-[calc(33.3333333333%-1.25rem)] lg:w-[calc(25%-1.25rem)] max-h-[36rem] cursor-pointer relative z-10">
+    <div className="w-[calc(50%-1.25rem)] md:w-[calc(33.3333333333%-1.25rem)] lg:w-[calc(25%-1.25rem)] max-h-[36rem] cursor-pointer">
       <Link href="/producto/[id]" as={`/producto/${id}`}>
         <a>
           <div className="w-full h-64 relative rounded-md bg-white ">

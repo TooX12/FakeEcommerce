@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext } from "react";
+import DashboardLayout from "../app/components/DashboardLayout";
 
 function dashboard() {
-
   return (
-    <div>dashboard</div>
-  )
+    <DashboardLayout/>
+  );
 }
 
-export default dashboard
+export default dashboard;

@@ -3,20 +3,20 @@ import React, { useContext } from "react";
 import useStorage from "../../app/hooks/useStorage";
 import { Producto } from "../../app/ts/producto.interface";
 
-function producto({ producto }: { producto: Producto }) {
-  const {setItem, getItem} = useStorage();
+function Producto({ producto }: { producto: Producto }) {
+  const { setItem, getItem } = useStorage();
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     let cart = [];
-    let items =  getItem('cart', 'local');
-    if(items !== undefined){
+    let items = getItem("cart", "local");
+    if (items !== undefined) {
       let cartItems = [...JSON.parse(items)];
-      cartItems= cartItems.filter(item => item.id !== producto.id)
-      cartItems.map((item) => cart.push(item))
+      cartItems = cartItems.filter((item) => item.id !== producto.id);
+      cartItems.map((item) => cart.push(item));
     }
     cart.push(producto);
-    setItem('cart', JSON.stringify(cart), 'local')
+    setItem("cart", JSON.stringify(cart), "local");
   };
 
   const { title, price, image, rating, description, category } = producto;
@@ -38,12 +38,12 @@ function producto({ producto }: { producto: Producto }) {
             {title}
           </h3>
           <div className="w-full md:w-1/2  md:h-full rounded-xl bg-white flex md:hidden justify-center items-center">
-          <img
-            className="w-44 md:w-5/6 h-44 md:h-5/6 object-contain"
-            src={image}
-            alt={`${title}.jpg`}
-          />
-        </div>
+            <img
+              className="w-44 md:w-5/6 h-44 md:h-5/6 object-contain"
+              src={image}
+              alt={`${title}.jpg`}
+            />
+          </div>
           <div className="w-full my-3 relative">
             <span className="flex gap-1 text-md sm:text-2xl font-semibold">
               $<p>{price}</p>
@@ -68,7 +68,7 @@ function producto({ producto }: { producto: Producto }) {
           <button
             type="button"
             className="w-48 sm:w-64 inline-block px-2 py-2.5 sm:px-10 sm:py-4 my-5 sm:my-10 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                onClick={handleSubmit}
+            onClick={handleSubmit}
           >
             Agregar al carrito
           </button>
@@ -78,7 +78,7 @@ function producto({ producto }: { producto: Producto }) {
   );
 }
 
-export default producto;
+export default Producto;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const producto = await fetch(
@@ -93,9 +93,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
-
   return {
-      paths: [], //indicates that no page needs be created at build time
-      fallback: 'blocking' //indicates the type of fallback
-  }
-}
+    paths: [], //indicates that no page needs be created at build time
+    fallback: "blocking", //indicates the type of fallback
+  };
+};
