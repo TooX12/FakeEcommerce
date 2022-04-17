@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { SetStateAction, useState } from "react";
 import useStorage from "../app/hooks/useStorage";
 
@@ -14,7 +15,7 @@ async function loginUser(credentials: any) {
 function Login() {
   const [username, setUserName] = useState<string | undefined>(undefined);
   const [password, setPassword] = useState<string | undefined>(undefined);
-  const {setItem, getItem} = useStorage();
+  const { setItem, getItem } = useStorage();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,9 +23,9 @@ function Login() {
       username,
       password,
     });
-    console.log(token)
-    setItem('token', JSON.stringify(token), 'local')
-    console.log(getItem('token', 'local'))
+    console.log(token);
+    setItem("token", JSON.stringify(token), "local");
+    console.log(getItem("token", "local"));
   };
   return (
     <section className="max-w-12xl h-[calc(100vh-5rem)] mx-auto">
@@ -41,12 +42,11 @@ function Login() {
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600">
               O{" "}
-              <a
-                href="#"
-                className="font-medium text-blue-600 hover:text-blue-500"
-              >
-                crea una cuenta
-              </a>
+              <Link href="/">
+                <a className="font-medium text-blue-600 hover:text-blue-500">
+                  crea una cuenta
+                </a>
+              </Link>
             </p>
           </div>
           <form className="mt-8 space-y-6" action="#" onSubmit={handleSubmit}>
@@ -101,12 +101,11 @@ function Login() {
               </div>
 
               <div className="text-sm text-right">
-                <a
-                  href="#"
-                  className="font-medium text-blue-600 hover:text-blue-500"
-                >
-                  ¿Olvidaste tú contraseña?
-                </a>
+                <Link href="/">
+                  <a className="font-medium text-blue-600 hover:text-blue-500">
+                    ¿Olvidaste tú contraseña?
+                  </a>
+                </Link>
               </div>
             </div>
 

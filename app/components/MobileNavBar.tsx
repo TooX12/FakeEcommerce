@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useState } from "react";
 import { links } from "../utils/links";
 
@@ -32,12 +33,12 @@ function MobileNavBar({
           </li>
           {links.map((link) => (
             <li className="p-2" key={link.href}>
-              <a
-                className="text-black opacity-60 hover:opacity-80 focus:opacity-80 p-0"
-                href={link.href}
-              >
+              <Link href={link.href}>
+              <a className="text-black opacity-60 hover:opacity-80 focus:opacity-80 p-0"
+                >
                 {link.nombre}
               </a>
+                </Link>
             </li>
           ))}
         </ul>

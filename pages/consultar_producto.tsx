@@ -1,4 +1,5 @@
 import { GetStaticProps } from "next";
+import Link from "next/link";
 import React from "react";
 import DashboardLayout from "../app/components/DashboardLayout";
 import { Producto } from "../app/ts/producto.interface";
@@ -58,21 +59,24 @@ function consultar_producto({ productos }: { productos: Producto[] }) {
                   {productos.map((producto) => (
                     <tr key={producto.id} className="bg-white border-b">
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                      {producto.id}
+                        {producto.id}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        <a href={`/consultar_producto/${producto.id}`}><i className='bx bx-link-external'></i></a>
+                        <Link href={`/consultar_producto/${producto.id}`}>
+                          <a>
+                            <i className="bx bx-link-external"></i>
+                          </a>
+                        </Link>
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                      {producto.title}
+                        {producto.title}
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                      {producto.price}
+                        {producto.price}
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                      {producto.category}
+                        {producto.category}
                       </td>
-
                     </tr>
                   ))}
                 </tbody>
@@ -88,9 +92,9 @@ function consultar_producto({ productos }: { productos: Producto[] }) {
 export default consultar_producto;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const productos = await fetch("https://fakestoreapi.com/products?limit=5").then(
-    (res) => res.json()
-  );
+  const productos = await fetch(
+    "https://fakestoreapi.com/products?limit=5"
+  ).then((res) => res.json());
 
   return {
     props: {
