@@ -18,7 +18,7 @@ function LandingSection() {
             Comprar
           </button>
         </div>
-        <div className="w-1/2 h-full bg-red-100 border-gray-800 border-l-[1rem] md:border-l-[2rem]">
+        <div className="w-1/2 h-full border-gray-800 border-l-[1rem] md:border-l-[2rem]">
           <img
             src="/landing.jpg"
             alt="convocatorias.jpg"

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import SideBar from "./SideBar";
 
-function DashboardLayout({ children }: any) {
+function DashboardLayout({ children }:{children: ReactNode}) {
   return (
     <>
       <section className="max-w-12xl mx-auto flex">

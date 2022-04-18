@@ -4,14 +4,17 @@ import useToggle from "../../app/hooks/useToggle";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { Producto } from "../../app/ts/producto.interface";
+import { Producto, ProductoFormikValues } from "../../app/ts/producto.interface";
 import ConfirmationModal from "../../app/components/ConfirmationModal";
+import { Api } from "../api/api";
+import { PRODUCTOS } from "../../app/utils/apiLinks";
+import HeadComponent from "../../app/components/HeadComponent";
 
 const ProductSchema = Yup.object().shape({
   title: Yup.string().required("Este campo es requerido"),
   price: Yup.string().required("Este campo es requerido"),
   description: Yup.string().required("Este campo es requerido"),
-  imagen: Yup.string().required("Este campo es requerido"),
+  image: Yup.string().required("Este campo es requerido"),
 });
 
 function ConsultarProductoIndividual({ producto }: { producto: Producto }) {
@@ -23,7 +26,7 @@ function ConsultarProductoIndividual({ producto }: { producto: Producto }) {
       title: producto.title,
       price: producto.price,
       description: producto.description,
-      imagen: "",
+      image: "",
     },
     validationSchema: ProductSchema,
     onSubmit: (values) => {
@@ -31,22 +34,17 @@ function ConsultarProductoIndividual({ producto }: { producto: Producto }) {
     },
   });
 
-  const handleSubmit = async (values: any) => {
-    const response = await fetch(
-      `https://fakestoreapi.com/products/${producto.id}`,
-      {
-        method: "PATCH",
-        body: JSON.stringify(values),
-      }
-    );
+  const handleSubmit = async (values: ProductoFormikValues) => {
+    const response = await Api.updateResource(PRODUCTOS, producto.id , values);
     if (response.status == 200) {
       setAlert();
-      setTimeout(setAlert, 2000);
+      setTimeout(setAlert, 3000);
     }
   };
 
   return (
     <>
+      <HeadComponent title={`Producto ${producto.id}`} />
       <DashboardLayout>
         <div className="w-full h-full relative">
           {alert && (
@@ -172,25 +170,25 @@ function ConsultarProductoIndividual({ producto }: { producto: Producto }) {
                     </div>
                     <div className="">
                       <label
-                        htmlFor="Imagen"
+                        htmlFor="Image"
                         className="form-label inline-block mb-2 text-gray-700"
                       >
-                        Imagen
+                        Image
                       </label>
                       <input
                         className="form-control block w-full  text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded
                       transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         type="file"
-                        id="imagen"
+                        id="image"
                         accept="image/*"
-                        name={formik.values.imagen}
-                        src={formik.values.imagen}
+                        name={formik.values.image}
+                        src={formik.values.image}
                         onChange={formik.handleChange}
-                        value={formik.values.imagen}
+                        value={formik.values.image}
                       />
-                      {formik.touched.imagen && formik.errors.imagen ? (
+                      {formik.touched.image && formik.errors.image ? (
                         <div className="text-sm text-red-400 mt-1">
-                          {formik.errors.imagen}
+                          {formik.errors.image}
                         </div>
                       ) : null}
                     </div>
@@ -224,10 +222,7 @@ function ConsultarProductoIndividual({ producto }: { producto: Producto }) {
 export default ConsultarProductoIndividual;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const producto = await fetch(
-    `https://fakestoreapi.com/products/${context.params?.id}`
-  ).then((res) => res.json());
-
+  const producto = await Api.getResourceById(PRODUCTOS, context.params?.id)
   return {
     props: {
       producto: producto,
@@ -236,11 +231,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const productosRes = await fetch(
-    "https://fakestoreapi.com/products"
-  ).then((res) => res.json());
+  const productosRes:any = await Api.getResources(PRODUCTOS);
 
-const paths = productosRes.map((producto:any)=> {
+const paths = productosRes.map((producto: Producto)=> {
   return {
     params:{
       id: `${producto.id}`,
@@ -253,3 +246,5 @@ const paths = productosRes.map((producto:any)=> {
     fallback: false, 
   };
 };
+
+

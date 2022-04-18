@@ -1,7 +1,8 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { useRef } from "react";
 import { Dialog } from "@headlessui/react";
 import { Producto } from "../ts/producto.interface";
+import { Api } from "../../pages/api/api";
+import { PRODUCTOS } from "../utils/apiLinks";
 
 function ConfirmationModal({
   open,
@@ -18,15 +19,10 @@ function ConfirmationModal({
 
   const handleDelete = async () => {
     setOpen();
-    const response = await fetch(
-      `https://fakestoreapi.com/products/${producto.id}`,
-      {
-        method: "DELETE",
-      }
-    );
+    const response = await Api.deleteResource(PRODUCTOS, producto.id)
     if (response.status == 200) {
       setAlertDelete();
-      setTimeout(setAlertDelete, 2000);
+      setTimeout(setAlertDelete, 3000);
     }
   };
 

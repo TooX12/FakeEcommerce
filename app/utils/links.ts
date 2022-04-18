@@ -3,7 +3,7 @@ const links = [
     { nombre: "Mujer", href: "/mujer" },
     { nombre: "Electrónica", href: "/electronica" },
     { nombre: "Joyería", href: "/joyeria" },
-    { nombre: "Dashboard", href: "/agregar_producto" },
+    { nombre: "Dashboard", href: "/consultar_producto" },
   ];
 
   export { links};

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useState } from "react";
-import { links } from "../utils/links";
+import { links } from "../../utils/links";
 
 function MobileNavBar({
   isOpen,
@@ -11,7 +11,6 @@ function MobileNavBar({
   setIsOpen: VoidFunction;
   touchStart: VoidFunction;
 }) {
-
   return (
     <>
       {/* <div
@@ -32,13 +31,12 @@ function MobileNavBar({
             </span>
           </li>
           {links.map((link) => (
-            <li className="p-2" key={link.href}>
+            <li className="p-2" key={link.href} onClick={setIsOpen}>
               <Link href={link.href}>
-              <a className="text-black opacity-60 hover:opacity-80 focus:opacity-80 p-0"
-                >
-                {link.nombre}
-              </a>
-                </Link>
+                <a className="text-black opacity-60 hover:opacity-80 focus:opacity-80 p-0" >
+                  {link.nombre}
+                </a>
+              </Link>
             </li>
           ))}
         </ul>
