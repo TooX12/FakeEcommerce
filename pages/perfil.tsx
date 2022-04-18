@@ -11,14 +11,14 @@ import { Api } from "./api/api";
 function PerfilPagina({ usuarios }: { usuarios: User[] }) {
   const [user, setUser] = useState<User>(usuarios[0]);
   const { getItem, removeItem } = useStorage();
-  let user_local = getItem("user-info", "local");
   const { name, email, address, phone } = user;
-
+  
   useEffect(() => {
+    let user_local = getItem("user-info", "local");
     user_local = user_local.replace(/["]/g, "");
     let userTemp = usuarios.filter((user) => user.username == user_local);
     setUser(userTemp[0]);
-  }, [user_local]);
+  }, [usuarios, getItem]);
 
   const handleRemove = () => {
     removeItem("user-info", "local")
