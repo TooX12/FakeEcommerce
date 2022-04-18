@@ -1,9 +1,15 @@
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./app/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      maxWidth:{
+        "12xl": "160rem",
+      }
+    },
   },
-  plugins: [],
+  plugins: [
+  ],
 }
