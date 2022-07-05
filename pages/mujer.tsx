@@ -1,39 +1,105 @@
 import { GetStaticProps } from "next";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import CategoryFiltersComponent from "../app/components/CategoryFiltersComponent";
+import HeadComponent from "../app/components/HeadComponent";
 import ProductCard from "../app/components/ProductCard";
+import useToggle from "../app/hooks/useToggle";
+import { Ordenar } from "../app/ts/ordernar.interface";
 import { Producto } from "../app/ts/producto.interface";
+import { PRODUCTOS_MUJER } from "../app/utils/apiLinks";
+import { filtros } from "../app/utils/filtros";
+import { ordenar } from "../app/utils/ordenar";
+import { Api } from "./api/api";
 
-function mujer({ productos }: { productos: Producto[] }) {
+function MujerPagina({ productos }: { productos: Producto[] }) {
   const renderProductos = () => {
-    return productos.map((producto) => {
+    return listaProductos.map((producto) => {
       return <ProductCard key={producto.id} producto={producto} />;
     });
   };
+
+  const [listaProductos, setListaProductos] = useState(productos);
+  const [sortOptions, setSortOptions] = useState<Ordenar[]>(JSON.parse(JSON.stringify(ordenar)));
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useToggle();
+
+  const handleSortItems = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    option: Ordenar
+  ) => {
+    setSortOptions((options) => {
+      const optionsData = [...options];
+      optionsData.forEach((element) =>
+        element.name == option.name
+          ? (element.current = true)
+          : (element.current = false)
+      );
+      return optionsData;
+    });
+  };
+
+  useEffect(() => {
+      if (sortOptions[0].current === true) {
+        setListaProductos((productos) => {
+          const productosData = [...productos];
+          productosData.sort(
+            (first_product, second_product) =>
+              second_product.rating.rate - first_product.rating.rate
+          );
+          return productosData;
+        });
+      } else if (sortOptions[1].current === true) {
+        setListaProductos((productos) => {
+          const productosData = [...productos];
+          productosData.sort(
+            (first_product, second_product) =>
+              first_product.price - second_product.price
+          );
+          return productosData;
+        });
+      } else if (sortOptions[2].current === true) {
+        setListaProductos((productos) => {
+          const productosData = [...productos];
+          productosData.sort(
+            (first_product, second_product) =>
+              second_product.price - first_product.price
+          );
+          return productosData;
+        });
+      }
+  }, [sortOptions]);
   return (
+  <>
+  <HeadComponent title="Mujer"/>
     <section className="bg-slate-50 max-w-12xl mx-auto">
       <div className="w-full h-64 lg:h-80 relative flex flex-col justify-center items-center mb-8 md:mb-10">
         <img
-          src="https://images.unsplash.com/photo-1505483531331-fc3cf89fd382?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80"
-          alt="convocatorias.jpg"
+          src="mujer.jpg"
+          alt="mujer.jpg"
           className="w-full h-full object-cover object-center brightness-[65%]"
         />
         <h1 className="text-white text-3xl md:text-4xl font-bold absolute">
         Ropa para Mujer
         </h1>
       </div>
-      <div className="flex flex-wrap pl-5 gap-5">
-        {renderProductos()}
-      </div>
+      <CategoryFiltersComponent
+        mobileFiltersOpen={mobileFiltersOpen}
+        setMobileFiltersOpen={setMobileFiltersOpen}
+        handleSortItems={handleSortItems}
+        filtros={filtros}
+        sortOptions={sortOptions}
+        title="Productos para mujer"
+      >
+        <div className="flex flex-wrap pl-5 gap-5">{renderProductos()}</div>
+      </CategoryFiltersComponent>
     </section>
+  </>
   );
 }
 
-export default mujer;
+export default MujerPagina;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const productos = await fetch(
-    "https://fakestoreapi.com/products/category/women's clothing"
-  ).then((res) => res.json());
+  const productos = await Api.getResources(PRODUCTOS_MUJER)
 
   return {
     props: {

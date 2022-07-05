@@ -13,4 +13,11 @@ interface Producto {
     count: number;
   }
 
-  export type { Producto, Rating };
+  interface ProductoFormikValues {
+    title: string;
+    price: string | number;
+    description: string;
+    image: string;
+  }
+
+  export type { Producto, Rating, ProductoFormikValues };

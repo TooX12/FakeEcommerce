@@ -1,57 +1,59 @@
+import Link from "next/link";
 import React from "react";
 
 function Footer() {
   return (
-    <footer className="text-center max-w-12xl mx-auto bg-gray-900 text-white flex flex-col items-center">
+    <footer className="relative z-10 text-center max-w-12xl mx-auto bg-gray-900 text-white flex flex-col items-center">
       <div className="container px-6 pt-6">
         <div className="flex justify-center mb-6">
-          <a
-            href="#!"
-            type="button"
-            className="flex justify-center items-center rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
-          >
-            <i className='bx bxl-facebook'></i>
-          </a>
-
-          <a
-            href="#!"
-            type="button"
-            className="flex justify-center items-center rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
-          >
-            <i className='bx bxl-twitter'></i>
-          </a>
-
-          <a
-            href="#!"
-            type="button"
-            className="flex justify-center items-center rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
-          >
-            <i className='bx bxl-google'></i>
-          </a>
-
-          <a
-            href="#!"
-            type="button"
-            className="flex justify-center items-center rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
-          >
-            <i className='bx bxl-instagram-alt'></i>
-          </a>
-
-          <a
-            href="#!"
-            type="button"
-            className="flex justify-center items-center rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
-          >
-            <i className='bx bxl-linkedin'></i>
-          </a>
-
-          <a
-            href="#!"
-            type="button"
-            className="flex justify-center items-center rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
-          >
-            <i className='bx bxl-github'></i>
-          </a>
+          <Link href="/">
+            <a
+              type="button"
+              className="flex justify-center items-center rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
+            >
+              <i className="bx bxl-facebook"></i>
+            </a>
+          </Link>
+          <Link href="/">
+            <a
+              type="button"
+              className="flex justify-center items-center rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
+            >
+              <i className="bx bxl-twitter"></i>
+            </a>
+          </Link>
+          <Link href="/">
+            <a
+              type="button"
+              className="flex justify-center items-center rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
+            >
+              <i className="bx bxl-google"></i>
+            </a>
+          </Link>
+          <Link href="/">
+            <a
+              type="button"
+              className="flex justify-center items-center rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
+            >
+              <i className="bx bxl-instagram-alt"></i>
+            </a>
+          </Link>
+          <Link href="/">
+            <a
+              type="button"
+              className="flex justify-center items-center rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
+            >
+              <i className="bx bxl-linkedin"></i>
+            </a>
+          </Link>
+          <Link href="/">
+            <a
+              type="button"
+              className="flex justify-center items-center rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
+            >
+              <i className="bx bxl-github"></i>
+            </a>
+          </Link>
         </div>
 
         <div>
@@ -115,24 +117,24 @@ function Footer() {
 
             <ul className="list-none mb-0">
               <li>
-                <a href="#!" className="text-white">
-                Superstar
-                </a>
+                <Link href="/">
+                  <a className="text-white">Superstar</a>
+                </Link>
               </li>
               <li>
-                <a href="#!" className="text-white">
-                Originals
-                </a>
+                <Link href="/">
+                  <a className="text-white">Originals</a>
+                </Link>
               </li>
               <li>
-                <a href="#!" className="text-white">
-                Ultraboost
-                </a>
+                <Link href="/">
+                  <a className="text-white">Ultraboost</a>
+                </Link>
               </li>
               <li>
-                <a href="#!" className="text-white">
-                Yeezy
-                </a>
+                <Link href="/">
+                  <a className="text-white">Yeezy</a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -141,24 +143,24 @@ function Footer() {
 
             <ul className="list-none mb-0">
               <li>
-                <a href="#!" className="text-white">
-                Estado del pedido
-                </a>
+                <Link href="/">
+                  <a className="text-white">Estado del pedido</a>
+                </Link>
               </li>
               <li>
-                <a href="#!" className="text-white">
-                Envío y entrega
-                </a>
+                <Link href="/">
+                  <a className="text-white">Envío y entrega</a>
+                </Link>
               </li>
               <li>
-                <a href="#!" className="text-white">
-                Devoluciones
-                </a>
+                <Link href="/">
+                  <a className="text-white">Devoluciones</a>
+                </Link>
               </li>
               <li>
-                <a href="#!" className="text-white">
-                Opciones de pago
-                </a>
+                <Link href="/">
+                  <a className="text-white">Opciones de pago</a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -168,50 +170,52 @@ function Footer() {
 
             <ul className="list-none mb-0">
               <li>
-                <a href="#!" className="text-white">
-                Noticias
-                </a>
+                <Link href="/">
+                  <a className="text-white">Noticias</a>
+                </Link>
               </li>
               <li>
-                <a href="#!" className="text-white">
-                Empleo
-                </a>
+                <Link href="/">
+                  <a className="text-white">Empleo</a>
+                </Link>
               </li>
               <li>
-                <a href="#!" className="text-white">
-                Inversionistas
-                </a>
+                <Link href="/">
+                  <a className="text-white">Inversionistas</a>
+                </Link>
               </li>
               <li>
-                <a href="#!" className="text-white">
-                Sostenibilidad
-                </a>
+                <Link href="/">
+                  <a className="text-white">Sostenibilidad</a>
+                </Link>
               </li>
             </ul>
           </div>
           <div className="mb-6">
-            <h5 className="uppercase font-bold mb-2.5">INFORMACIÓN DE LA EMPRESA</h5>
+            <h5 className="uppercase font-bold mb-2.5">
+              INFORMACIÓN DE LA EMPRESA
+            </h5>
 
             <ul className="list-none mb-0">
               <li>
-                <a href="#!" className="text-white">
-                Blog
-                </a>
+                <Link href="/">
+                  <a className="text-white">Blog</a>
+                </Link>
               </li>
               <li>
-                <a href="#!" className="text-white">
-                Trabaja en Nuestro Equipo
-                </a>
+                <Link href="/">
+                  <a className="text-white">Trabaja en Nuestro Equipo</a>
+                </Link>
               </li>
               <li>
-                <a href="#!" className="text-white">
-                Prensa
-                </a>
+                <Link href="/">
+                  <a className="text-white">Prensa</a>
+                </Link>
               </li>
               <li>
-                <a href="#!" className="text-white">
-                Información Corporativa
-                </a>
+                <Link href="/">
+                  <a className="text-white">Información Corporativa</a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -219,10 +223,7 @@ function Footer() {
       </div>
 
       <div className="w-full text-center p-4 bg-black/20">
-        © 2022 Copyright:
-        <a className="text-white" href="#">
-          Fake Ecommerce
-        </a>
+        <p className="text-white">© 2022 Copyright: Fake Ecommerce</p>
       </div>
     </footer>
   );

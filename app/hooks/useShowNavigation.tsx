@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import useToggle from "./useToggle";
 import useWindowWidth from "./useWindowWidth";
 import {
